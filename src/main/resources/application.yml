@@ -1,0 +1,29 @@
+#Server configuration
+server:
+  port: 9100
+  servlet:
+    context-path: /products
+
+#Log configuration
+logging:
+  level:
+    root: INFO
+    com.jnr: DEBUG
+  file: 
+    name: logs/app.log
+  pattern:
+    console: "%d %-5level [%X{uuid}] %logger : %msg%n"
+    file: "%d %-5level [%thread] [%X{uuid}] %logger : %msg%n"
+    
+#JPA configuration
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/jnr_instance?enabledTLSProtocols=TLSv1.2
+    username: siva
+    password: admin@123
+    hikari:
+      maximumPoolSize: 10
+      minimumIdle: 10
+      idleTimeout: 50000
+  jpa:
+    show-sql: true
