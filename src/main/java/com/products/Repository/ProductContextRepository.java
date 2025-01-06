@@ -34,9 +34,9 @@ public class ProductContextRepository {
 	}
 
 	public Page<CreateProduct> findByNameContainingIgnoreCaseOrCategoryContainingIgnoreCase(String search,
-			String sortBy, int page, int size) {
+			String sortBy, int page, int size, String orderBy) {
 		Page<ProductDto> productDto = null;
-		Sort sort = Sort.by(sortBy).ascending();
+		Sort sort = orderBy.equalsIgnoreCase("ASC") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
 		Pageable pageable = PageRequest.of(page, size, sort);
 
 		if (search != null && !search.isEmpty()) {

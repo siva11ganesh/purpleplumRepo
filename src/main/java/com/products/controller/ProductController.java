@@ -41,8 +41,8 @@ public class ProductController {
 	@GetMapping("/fetchproduct")
 	public Page<CreateProduct> getProducts(@RequestParam(required = false) String search,
 			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "10") int size) {
-		return productService.fetchProducts(search, sortBy, page, size);
+			@RequestParam(defaultValue = "10") int size,@RequestParam(defaultValue = "asc") String orderBy) {
+		return productService.fetchProducts(search, sortBy, page, size,orderBy);
 	}
 
 	@PutMapping(value = "/updateproduct/{productId}", consumes = MediaType.APPLICATION_JSON_VALUE)

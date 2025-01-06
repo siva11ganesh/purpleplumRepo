@@ -29,9 +29,9 @@ public class ProductService {
 		return "Product Added Successfully";
 	}
 
-	public Page<CreateProduct> fetchProducts(String search, String sortBy, int page, int size) {
+	public Page<CreateProduct> fetchProducts(String search, String sortBy, int page, int size,String orderBy) {
 		log.info("Fetching Product Details");
-		return productRepo.findByNameContainingIgnoreCaseOrCategoryContainingIgnoreCase(search, sortBy, page, size);
+		return productRepo.findByNameContainingIgnoreCaseOrCategoryContainingIgnoreCase(search, sortBy, page, size,orderBy);
 	}
 
 	public Object updateProduct(String id, CreateProduct productDetails) throws CustomException {
